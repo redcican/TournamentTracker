@@ -16,7 +16,7 @@ namespace TrackerLibrary
 
         public List<PrizeModel> Prizes { get; set; } = new List<PrizeModel>();
 
-        public List<List<MatchUpModel>> Rounds { get; set; } = new List<List<MatchUpModel>>();
+        public List<List<MatchupModel>> Rounds { get; set; } = new List<List<MatchupModel>>();
 
     }
 }

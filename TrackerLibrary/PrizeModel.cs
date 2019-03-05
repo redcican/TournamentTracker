@@ -8,12 +8,24 @@ namespace TrackerLibrary
 {
     public class PrizeModel
     {
+        /// <summary>
+        /// Represents the number of winning place
+        /// </summary>
         public int PlaceNumber { get; set; }
 
+        /// <summary>
+        /// Represents the name of a winning place
+        /// </summary>
         public string PlaceName { get; set; }
 
+        /// <summary>
+        /// Represents the amount of prize for a winner
+        /// </summary>
         public decimal PrizeAmount { get; set; }
 
+        /// <summary>
+        /// Represents the percentage of a winning prize
+        /// </summary>
         public double PrizePercentage { get; set; }
     }
 }

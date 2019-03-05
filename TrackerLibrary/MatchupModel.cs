@@ -8,10 +8,19 @@ namespace TrackerLibrary
 {
     public class MatchupModel
     {
+        /// <summary>
+        /// Represents the matchup team
+        /// </summary>
         public List<MatchupEntryModel> Entries { get; set; } = new List<MatchupEntryModel>();
 
+        /// <summary>
+        /// Represents the team winner
+        /// </summary>
         public TeamModel Winner { get; set; }
 
+        /// <summary>
+        /// Represents the round of every matchup
+        /// </summary>
         public int MatchupRound { get; set; }
     }
 }

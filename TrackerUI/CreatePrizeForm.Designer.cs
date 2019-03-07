@@ -88,7 +88,7 @@
             this.placeNameLabel.Size = new System.Drawing.Size(191, 45);
             this.placeNameLabel.TabIndex = 15;
             this.placeNameLabel.Text = "Place Name";
-            this.placeNameLabel.Click += new System.EventHandler(this.label1_Click);
+            //this.placeNameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // prizeAmountValue
             // 
@@ -145,19 +145,20 @@
             this.createPrizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createPrizeButton.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createPrizeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
-            this.createPrizeButton.Location = new System.Drawing.Point(129, 518);
+            this.createPrizeButton.Location = new System.Drawing.Point(147, 534);
             this.createPrizeButton.Name = "createPrizeButton";
             this.createPrizeButton.Size = new System.Drawing.Size(321, 80);
             this.createPrizeButton.TabIndex = 26;
             this.createPrizeButton.Text = "Create Prize";
             this.createPrizeButton.UseVisualStyleBackColor = true;
+            this.createPrizeButton.Click += new System.EventHandler(this.createPrizeButton_Click);
             // 
             // CreatePrizeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(600, 636);
+            this.ClientSize = new System.Drawing.Size(625, 688);
             this.Controls.Add(this.createPrizeButton);
             this.Controls.Add(this.orLabel);
             this.Controls.Add(this.prizePercentageValue);

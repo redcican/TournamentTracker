@@ -10,13 +10,13 @@ namespace TrackerLibrary
     {
         public static List<IDataConnection> Connections { get; private set; }
 
-        public static void InitializeConnections(bool database, bool textfiles)
+        public static void InitializeConnections(bool database, bool textFiles)
         {
             if (database)
             {
                 // TODO - create the SQL connections
             }
-            if (textfiles)
+            if (textFiles)
             {
                 // TODO - create the Text connections
             }

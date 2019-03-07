@@ -46,6 +46,7 @@
             this.headerLabel.Size = new System.Drawing.Size(501, 65);
             this.headerLabel.TabIndex = 13;
             this.headerLabel.Text = "Tournament Dashboard";
+            this.headerLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.headerLabel.Click += new System.EventHandler(this.headerLabel_Click);
             // 
             // loadExistingTournamentDropDown

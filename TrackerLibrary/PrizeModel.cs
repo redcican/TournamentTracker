@@ -32,5 +32,30 @@ namespace TrackerLibrary
         /// Represents the percentage of a winning prize
         /// </summary>
         public double PrizePercentage { get; set; }
+
+        public PrizeModel()
+        {
+
+        }
+
+        /// <summary>
+        /// override the constructor to parse the all properties to be valid.
+        /// </summary>
+        public PrizeModel(string placeName, string placeNumber, string prizeAmount, string prizePercentage)
+        {
+            PlaceName = placeName;
+
+            int placenNumberValue = 0;
+            int.TryParse(placeNumber, out placenNumberValue);
+            PlaceNumber = placenNumberValue;
+
+            decimal prizeAmountValue = 0;
+            decimal.TryParse(prizeAmount, out prizeAmountValue);
+            PrizeAmount = prizeAmountValue;
+
+            double prizePercentageValue = 0;
+            double.TryParse(prizePercentage, out prizePercentageValue);
+            PrizePercentage = prizePercentageValue;
+        }
     }
 }

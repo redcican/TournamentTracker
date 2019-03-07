@@ -88,7 +88,6 @@
             this.placeNameLabel.Size = new System.Drawing.Size(191, 45);
             this.placeNameLabel.TabIndex = 15;
             this.placeNameLabel.Text = "Place Name";
-            //this.placeNameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // prizeAmountValue
             // 
@@ -96,6 +95,8 @@
             this.prizeAmountValue.Name = "prizeAmountValue";
             this.prizeAmountValue.Size = new System.Drawing.Size(203, 43);
             this.prizeAmountValue.TabIndex = 18;
+            this.prizeAmountValue.Text = "0";
+            this.prizeAmountValue.TextChanged += new System.EventHandler(this.prizeAmountValue_TextChanged);
             // 
             // prizeAmountLabel
             // 
@@ -104,9 +105,10 @@
             this.prizeAmountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.prizeAmountLabel.Location = new System.Drawing.Point(54, 273);
             this.prizeAmountLabel.Name = "prizeAmountLabel";
-            this.prizeAmountLabel.Size = new System.Drawing.Size(216, 45);
+            this.prizeAmountLabel.Size = new System.Drawing.Size(215, 45);
             this.prizeAmountLabel.TabIndex = 17;
-            this.prizeAmountLabel.Text = "prize Amount";
+            this.prizeAmountLabel.Text = "Prize Amount";
+            this.prizeAmountLabel.Click += new System.EventHandler(this.prizeAmountLabel_Click);
             // 
             // prizePercentageValue
             // 
@@ -114,6 +116,7 @@
             this.prizePercentageValue.Name = "prizePercentageValue";
             this.prizePercentageValue.Size = new System.Drawing.Size(203, 43);
             this.prizePercentageValue.TabIndex = 20;
+            this.prizePercentageValue.Text = "0";
             // 
             // prizePercentageLabel
             // 

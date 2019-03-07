@@ -29,11 +29,17 @@ namespace TrackerUI
                         prizePercentageValue.Text
                     );
 
-                foreach(IDataConnection db in GlobalConfig.Connections)
+                foreach (IDataConnection db in GlobalConfig.Connections)
                 {
                     db.CreatePrize(model);
                 }
-            }
+
+                placeNameValue.Text = "";
+                placeNumberValue.Text = "";
+                prizeAmountValue.Text = "0";
+                prizePercentageValue.Text = "0";
+                }
+
             else
             {
                 MessageBox.Show("This form has invalid information, Please check it and try again!");
@@ -50,17 +56,17 @@ namespace TrackerUI
             int placeNumber = 0;
             bool placeNumberValidNumber = int.TryParse(placeNumberValue.Text, out placeNumber);
 
-            if(placeNumberValidNumber == false)
+            if (placeNumberValidNumber == false)
             {
                 output = false;
             }
 
-            if(placeNumber < 1)
+            if (placeNumber < 1)
             {
                 output = false;
             }
 
-            if(placeNameValue.Text.Length == 0)
+            if (placeNameValue.Text.Length == 0)
             {
                 output = false;
             }
@@ -71,21 +77,31 @@ namespace TrackerUI
             bool prizeAmountValid = decimal.TryParse(prizeAmountValue.Text, out prizeAmount);
             bool prizePercentageValid = double.TryParse(prizePercentageValue.Text, out prizePercentage);
 
-            if(prizeAmountValid == false || prizePercentageValid == false)
+            if (prizeAmountValid == false || prizePercentageValid == false)
             {
                 output = false;
             }
 
-            if(prizeAmount <= 0 && prizePercentage <= 0)
+            if (prizeAmount <= 0 && prizePercentage <= 0)
             {
                 output = false;
             }
 
-            if(prizePercentage <0 || prizePercentage > 100)
+            if (prizePercentage < 0 || prizePercentage > 100)
             {
                 output = false;
             }
             return output;
+        }
+
+        private void prizeAmountValue_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void prizeAmountLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,6 +28,15 @@ namespace TrackerUI
                         prizeAmountValue.Text,
                         prizePercentageValue.Text
                     );
+
+                foreach(IDataConnection db in GlobalConfig.Connections)
+                {
+                    db.CreatePrize(model);
+                }
+            }
+            else
+            {
+                MessageBox.Show("This form has invalid information, Please check it and try again!");
             }
         }
 
@@ -39,7 +48,7 @@ namespace TrackerUI
         {
             bool output = true;
             int placeNumber = 0;
-            bool placeNumberValidNumber = int.TryParse(placeNameValue.Text, out placeNumber);
+            bool placeNumberValidNumber = int.TryParse(placeNumberValue.Text, out placeNumber);
 
             if(placeNumberValidNumber == false)
             {

@@ -53,6 +53,18 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             }
 
             return output;
-        } 
+        }
+
+        // 5. Convert the prizes to List<string>
+        // 6. Save the List<string> to the text file
+        public static void SaveToPrizeFile(this List<PrizeModel>models, string filename)
+        {
+            List<string> lines = new List<string>();
+            foreach (PrizeModel p in models)
+            {
+                lines.Add($"{p.Id},{p.PlaceNumber},{p.PlaceName},{p.PrizeAmount},{p.PrizePercentage}");
+            }
+            File.WriteAllLines(filename.FullFilePath(), lines);
+        }
     }
 }

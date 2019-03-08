@@ -24,6 +24,10 @@ namespace TrackerLibrary.DataAccess
             //4.Add the new record to the new ID(max + 1)
             prizes.Add(model);
 
+            // Save the List<string> to the text file
+            prizes.SaveToPrizeFile(PrizeFile);
+
+            return model;
         }
     }
 }

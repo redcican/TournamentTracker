@@ -96,7 +96,7 @@
             this.prizeAmountValue.Size = new System.Drawing.Size(203, 43);
             this.prizeAmountValue.TabIndex = 18;
             this.prizeAmountValue.Text = "0";
-            this.prizeAmountValue.TextChanged += new System.EventHandler(this.prizeAmountValue_TextChanged);
+            
             // 
             // prizeAmountLabel
             // 
@@ -108,7 +108,7 @@
             this.prizeAmountLabel.Size = new System.Drawing.Size(215, 45);
             this.prizeAmountLabel.TabIndex = 17;
             this.prizeAmountLabel.Text = "Prize Amount";
-            this.prizeAmountLabel.Click += new System.EventHandler(this.prizeAmountLabel_Click);
+            
             // 
             // prizePercentageValue
             // 

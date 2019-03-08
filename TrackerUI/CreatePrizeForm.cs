@@ -95,15 +95,5 @@ namespace TrackerUI
             }
             return output;
         }
-
-        private void prizeAmountValue_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prizeAmountLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

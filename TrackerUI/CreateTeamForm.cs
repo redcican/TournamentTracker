@@ -23,13 +23,21 @@ namespace TrackerUI
         {
             if (ValidateForm())
             {
-                PersonModel p = new PersonModel();
-                p.FirstName = firstNameValue.Text;
-                p.LastName = lastNameValue.Text;
-                p.CellPhoneNumber = cellPhoneValue.Text;
-                p.EmailAddress = emailValue.Text;
+                PersonModel p = new PersonModel
+                {
+                    FirstName = firstNameValue.Text,
+                    LastName = lastNameValue.Text,
+                    CellPhoneNumber = cellPhoneValue.Text,
+                    EmailAddress = emailValue.Text
+                };
 
                 GlobalConfig.Connection.CreatPerson(p);
+
+                // clear out the input
+                firstNameValue.Text = "";
+                lastNameValue.Text = "";
+                cellPhoneValue.Text = "";
+                emailValue.Text = "";
             }
             else
             {

@@ -10,6 +10,7 @@ namespace TrackerLibrary.DataAccess
 {
     public class TextConnector : IDataConnection
     {
+        #region Prizemodel
         private const string PrizeFile = "PrizeModels.csv";
 
         // TODO - Wire up the CreatePrize for text files.
@@ -33,7 +34,9 @@ namespace TrackerLibrary.DataAccess
 
             return model;
         }
+        #endregion
 
+        #region PersonModel
         private const string PeopleFile = "PersonModels.csv";
         // TODO - Wire up the CreateTeam for text files.
         public PersonModel CreatPerson(PersonModel model)
@@ -49,5 +52,6 @@ namespace TrackerLibrary.DataAccess
             people.SaveToPeopleFile(PeopleFile);
             return model;
         }
+        #endregion
     }
 }

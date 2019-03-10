@@ -19,12 +19,16 @@ namespace TrackerLibrary.DataAccess.TextHelpers
 {
     public static class TextConnectorProcessor
     {
+        #region FullFilePath
         // fileName: e.g PrizeModels.csv
         public static string FullFilePath(this string fileName)
         {
             return $"{ConfigurationManager.AppSettings["filePath"]}\\{fileName}";
         }
 
+        #endregion
+
+        #region LoadFile
         // 1. Load the text file
         public static List<string> LoadFile(this string file)
         {
@@ -34,7 +38,9 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             }
             return File.ReadAllLines(file).ToList();
         }
+        #endregion
 
+        #region ConverToPrizeModels
         // 2. Convert the text file to List<PrizeModel>
         public static List<PrizeModel> ConvertToPrizeModels (this List<string> lines)
         {
@@ -56,7 +62,9 @@ namespace TrackerLibrary.DataAccess.TextHelpers
 
             return output;
         }
+        #endregion
 
+        #region ConverToPersonModels
         // Convert the text file to List<PersonModel>
         public static List<PersonModel> ConvertToPersonModels(this List<string> lines)
         {
@@ -79,6 +87,8 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return output;
         }
 
+        #endregion
+        #region SaveToPrizeFile
         // 5. Convert the prizes to List<string>
         // 6. Save the List<PrizeModel> to the text file
         public static void SaveToPrizeFile(this List<PrizeModel>models, string filename)
@@ -90,7 +100,9 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             }
             File.WriteAllLines(filename.FullFilePath(), lines);
         }
-        
+        #endregion
+
+        #region SaveToPeopleFile
         // Save the List<PersonModel> to the text file
         public static void SaveToPeopleFile(this List<PersonModel> models, string filename)
         {
@@ -101,5 +113,6 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             }
             File.WriteAllLines(filename.FullFilePath(), lines);
         }
+        #endregion
     }
 }

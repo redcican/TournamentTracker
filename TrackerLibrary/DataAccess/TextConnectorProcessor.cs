@@ -55,6 +55,28 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return output;
         }
 
+        // Convert the text file to List<PersonModel>
+        public static List<PersonModel> ConvertToPersonModels(this List<string> lines)
+        {
+            List<PersonModel> output = new List<PersonModel>();
+
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split(',');
+                PersonModel p = new PersonModel
+                {
+                    Id = int.Parse(cols[0]),
+                    FirstName = cols[1],
+                    LastName = cols[2],
+                    EmailAddress = cols[3],
+                    CellPhoneNumber = cols[4]
+                };
+                output.Add(p);
+            }
+
+            return output;
+        }
+
         // 5. Convert the prizes to List<string>
         // 6. Save the List<string> to the text file
         public static void SaveToPrizeFile(this List<PrizeModel>models, string filename)

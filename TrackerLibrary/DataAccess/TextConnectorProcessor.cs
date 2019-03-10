@@ -43,12 +43,14 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             foreach (string line in lines)
             {
                 string[] cols = line.Split(',');
-                PrizeModel p = new PrizeModel();
-                p.Id = int.Parse(cols[0]);
-                p.PlaceNumber = int.Parse(cols[1]);
-                p.PlaceName = cols[2];
-                p.PrizeAmount = decimal.Parse(cols[3]);
-                p.PrizePercentage = double.Parse(cols[4]);
+                PrizeModel p = new PrizeModel
+                {
+                    Id = int.Parse(cols[0]),
+                    PlaceNumber = int.Parse(cols[1]),
+                    PlaceName = cols[2],
+                    PrizeAmount = decimal.Parse(cols[3]),
+                    PrizePercentage = double.Parse(cols[4])
+                };
                 output.Add(p);
             }
 
@@ -95,7 +97,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             List<string> lines = new List<string>();
             foreach (PersonModel p in models)
             {
-                lines.Add($"{p.Id}, {p.FirstName},{p.LastName},{p.EmailAddress},{p.CellPhoneNumber}");
+                lines.Add($"{p.Id},{p.FirstName},{p.LastName},{p.EmailAddress},{p.CellPhoneNumber}");
             }
             File.WriteAllLines(filename.FullFilePath(), lines);
         }

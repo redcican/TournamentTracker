@@ -33,5 +33,12 @@ namespace TrackerLibrary.DataAccess
 
             return model;
         }
+
+
+        // TODO - Wire up the CreateTeam for text files.
+        public PersonModel CreatPerson(PersonModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -47,7 +47,7 @@ namespace TrackerUI
         }
 
         /// <summary>
-        /// Method to validate the input.
+        /// Method to validate the input of CreatPrizeForm.
         /// </summary>
         /// <returns></returns>
         private bool ValidateForm()

@@ -9,6 +9,10 @@ namespace TrackerLibrary.DataAccess
 {
     public interface IDataConnection
     {
+        // Initialize the PrizeModel for the DataConnectin
         PrizeModel CreatePrize(PrizeModel model);
+
+        // Initialize the PersonModel for the DataConnection
+        PersonModel CreatPerson(PersonModel model);
     }
 }

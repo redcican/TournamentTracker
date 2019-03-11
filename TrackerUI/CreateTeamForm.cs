@@ -14,11 +14,44 @@ namespace TrackerUI
 {
     public partial class CreateTeamForm : Form
     {
+        #region Variable for Team members
+        private List<PersonModel> availableTeamMembers = new List<PersonModel>();
+        private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
+        #endregion
+
+        #region initialize
         public CreateTeamForm()
         {
             InitializeComponent();
+            //CreateSampleData();
+            WireUpLists();
+        }
+        #endregion
+
+        #region Testdata
+        private void CreateSampleData()
+        {
+            availableTeamMembers.Add(new PersonModel {FirstName="Tim", LastName="Corey" });
+            availableTeamMembers.Add(new PersonModel { FirstName = "Sue", LastName = "Storm" });
+
+            selectedTeamMembers.Add(new PersonModel { FirstName = "Chen", LastName = "Shikun" });
+            selectedTeamMembers.Add(new PersonModel { FirstName = "Jane", LastName = "Jones" });
         }
 
+        #endregion
+
+        #region Method to wire up a selected team from combobox to list
+        private void WireUpLists()
+        {
+            selectTeamMemberDropDown.DataSource = availableTeamMembers;
+            selectTeamMemberDropDown.DisplayMember = "FullName";
+
+            teamMembersListBox.DataSource = selectedTeamMembers;
+            teamMembersListBox.DisplayMember = "FullName";
+        }
+        #endregion
+
+        #region create Team Member Button
         private void createMemberbutton_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
@@ -45,7 +78,9 @@ namespace TrackerUI
             }
         }
 
+        #endregion
 
+        #region validation form for create team form
         // TODO - Add validation to the CreateTeamForm
         private bool ValidateForm()
         {
@@ -72,5 +107,6 @@ namespace TrackerUI
 
             return true;
         }
+        #endregion
     }
 }

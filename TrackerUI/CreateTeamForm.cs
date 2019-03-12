@@ -119,13 +119,30 @@ namespace TrackerUI
         {
             PersonModel p = (PersonModel)selectTeamMemberDropDown.SelectedItem;
 
-            // remove the selected p from the selected drop down
-            availableTeamMembers.Remove(p);
-            // add the selected p to the box list
-            selectedTeamMembers.Add(p);
-
-            WireUpLists();
+            if (p!=null)
+            {
+                // remove the selected p from the selected drop down
+                availableTeamMembers.Remove(p);
+                // add the selected p to the box list
+                selectedTeamMembers.Add(p);
+                // refresh the lists.
+                WireUpLists(); 
+            }
         }
         #endregion
+
+        private void RemoveSelectedMemberButton_Click(object sender, EventArgs e)
+        {
+            PersonModel p = (PersonModel)teamMembersListBox.SelectedItem;
+            if (p!=null)
+            {
+                // remove the selected p from the list box
+                selectedTeamMembers.Remove(p);
+                // readd the p to the drop down list
+                availableTeamMembers.Add(p);
+                // refresh the lists
+                WireUpLists(); 
+            }
+        }
     }
 }

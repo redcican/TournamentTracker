@@ -14,5 +14,8 @@ namespace TrackerLibrary.DataAccess
 
         // Initialize the PersonModel for the DataConnection
         PersonModel CreatPerson(PersonModel model);
+
+        // Get all peopel
+        List<PersonModel> GetPerson_All();
     }
 }

@@ -23,7 +23,9 @@ namespace TrackerUI
         public CreateTeamForm()
         {
             InitializeComponent();
+
             //CreateSampleData();
+
             WireUpLists();
         }
         #endregion

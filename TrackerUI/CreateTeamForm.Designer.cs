@@ -94,6 +94,7 @@
             this.addMemberButton.TabIndex = 19;
             this.addMemberButton.Text = "Add Member";
             this.addMemberButton.UseVisualStyleBackColor = true;
+            this.addMemberButton.Click += new System.EventHandler(this.AddMemberButton_Click);
             // 
             // selectTeamMemberDropDown
             // 
@@ -148,7 +149,7 @@
             this.createMemberbutton.TabIndex = 20;
             this.createMemberbutton.Text = "Create Member";
             this.createMemberbutton.UseVisualStyleBackColor = true;
-            this.createMemberbutton.Click += new System.EventHandler(this.createMemberbutton_Click);
+            this.createMemberbutton.Click += new System.EventHandler(this.CreateMemberbutton_Click);
             // 
             // cellPhoneValue
             // 

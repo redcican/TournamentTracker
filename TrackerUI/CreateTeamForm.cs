@@ -15,7 +15,7 @@ namespace TrackerUI
     public partial class CreateTeamForm : Form
     {
         #region Variable for Team members
-        private List<PersonModel> availableTeamMembers = new List<PersonModel>();
+        private List<PersonModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
         private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
         #endregion
 
@@ -45,16 +45,19 @@ namespace TrackerUI
         #region Method to wire up a selected team from combobox to list
         private void WireUpLists()
         {
+            // set the value to null to refresh the drop down
+            selectTeamMemberDropDown.DataSource = null;
             selectTeamMemberDropDown.DataSource = availableTeamMembers;
             selectTeamMemberDropDown.DisplayMember = "FullName";
 
+            teamMembersListBox.DataSource = null;
             teamMembersListBox.DataSource = selectedTeamMembers;
             teamMembersListBox.DisplayMember = "FullName";
         }
         #endregion
 
         #region create Team Member Button
-        private void createMemberbutton_Click(object sender, EventArgs e)
+        private void CreateMemberbutton_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
             {
@@ -108,6 +111,20 @@ namespace TrackerUI
             }
 
             return true;
+        }
+        #endregion
+
+        #region Add team member to the list button
+        private void AddMemberButton_Click(object sender, EventArgs e)
+        {
+            PersonModel p = (PersonModel)selectTeamMemberDropDown.SelectedItem;
+
+            // remove the selected p from the selected drop down
+            availableTeamMembers.Remove(p);
+            // add the selected p to the box list
+            selectedTeamMembers.Add(p);
+
+            WireUpLists();
         }
         #endregion
     }

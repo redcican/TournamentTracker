@@ -53,5 +53,12 @@ namespace TrackerLibrary.DataAccess
             return model;
         }
         #endregion
+
+        #region Text connection to get all team meamber
+        public List<PersonModel> GetPerson_All()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

@@ -69,7 +69,9 @@ namespace TrackerUI
                     EmailAddress = emailValue.Text
                 };
 
-                GlobalConfig.Connection.CreatPerson(p);
+                p = GlobalConfig.Connection.CreatPerson(p);
+                selectedTeamMembers.Add(p);
+                WireUpLists();
 
                 // clear out the input
                 firstNameValue.Text = "";

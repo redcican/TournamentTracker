@@ -16,7 +16,8 @@ using TrackerLibrary.Models;
 namespace TrackerLibrary.DataAccess
 {
     public class SqlConnector : IDataConnection
-    {   
+    {
+        #region SQL CreatePrize model
         /// <summary>
         /// Saves a new prize to the database       
         /// </summary>
@@ -40,6 +41,9 @@ namespace TrackerLibrary.DataAccess
                 return model;
             }
         }
+        #endregion
+
+        #region SQL CreatePerson model
         /// <summary>
         /// Saves a new person member to the database
         /// </summary>
@@ -63,5 +67,19 @@ namespace TrackerLibrary.DataAccess
                 return model;
             }
         }
+        #endregion
+
+        #region SQL Get all Person
+        public List<PersonModel> GetPerson_All()
+        {
+            List<PersonModel> output;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments"))) 
+            {
+                output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
+            }
+            return output;
+        }
+        #endregion
     }
+
 }

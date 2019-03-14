@@ -149,7 +149,13 @@ namespace TrackerUI
 
         private void CreateTeamButton_Click(object sender, EventArgs e)
         {
+            TeamModel t = new TeamModel
+            {
+                TeamName = teamNameValue.Text,
+                TeamMembers = selectedTeamMembers
+            };
 
+            t = GlobalConfig.Connection.CreateTeam(t);
         }
     }
 }

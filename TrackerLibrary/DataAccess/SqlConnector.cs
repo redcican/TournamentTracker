@@ -87,7 +87,27 @@ namespace TrackerLibrary.DataAccess
         #region Get all Teams
         public TeamModel CreateTeam(TeamModel model)
         {
-            throw new NotImplementedException();
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var t = new DynamicParameters();
+                t.Add("@TeamName", model.TeamName);
+                t.Add("@id", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spTeams_Insert", param: t, commandType: CommandType.StoredProcedure);
+
+                model.Id = t.Get<int>("@id");
+
+                foreach (PersonModel tm in model.TeamMembers)
+                {
+                    var p = new DynamicParameters();
+                    p.Add(@"TeamId", model.Id);
+                    p.Add(@"PersonId", tm.Id);
+
+                    connection.Execute("dbo.spTeamMembers_Insert", param: p, commandType: CommandType.StoredProcedure);
+                }
+
+                return model;
+            }
         }
         #endregion
     }

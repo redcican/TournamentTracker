@@ -146,5 +146,10 @@ namespace TrackerUI
                 WireUpLists(); 
             }
         }
+
+        private void CreateTeamButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

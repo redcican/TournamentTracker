@@ -43,6 +43,7 @@ namespace TrackerLibrary.DataAccess
                 return model;
             }
         }
+
         #endregion
 
         #region SQL CreatePerson model
@@ -80,6 +81,13 @@ namespace TrackerLibrary.DataAccess
                 output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
             }
             return output;
+        }
+        #endregion
+
+        #region Get all Teams
+        public TeamModel CreateTeam(TeamModel model)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

@@ -60,5 +60,12 @@ namespace TrackerLibrary.DataAccess
             return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
         }
         #endregion
+
+        #region Text connection to get all teams.
+        public TeamModel CreateTeam(TeamModel model)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

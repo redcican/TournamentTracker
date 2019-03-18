@@ -61,7 +61,7 @@ namespace TrackerLibrary.DataAccess
         }
         #endregion
 
-        #region Text connection to get all teams.
+        #region Text connection to create all teams.
 
         private const string TeamFile = "TeamModels.csv";
         public TeamModel CreateTeam(TeamModel model)
@@ -77,6 +77,13 @@ namespace TrackerLibrary.DataAccess
             teams.Add(model);
             teams.SaveToTeamFile(TeamFile);
             return model;
+        }
+        #endregion
+
+        #region Text connection to get all teams
+        public List<TeamModel> GetTeam_All()
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

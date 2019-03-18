@@ -58,7 +58,7 @@
             this.headerLabel.Size = new System.Drawing.Size(411, 65);
             this.headerLabel.TabIndex = 1;
             this.headerLabel.Text = "Create Tournament";
-            this.headerLabel.Click += new System.EventHandler(this.headerLabel_Click);
+     
             // 
             // tournamentNameValue
             // 
@@ -85,7 +85,7 @@
             this.entryFeeValue.Size = new System.Drawing.Size(126, 43);
             this.entryFeeValue.TabIndex = 12;
             this.entryFeeValue.Text = "0";
-            this.entryFeeValue.TextChanged += new System.EventHandler(this.entryFeeValue_TextChanged);
+            
             // 
             // entryFeeLabel
             // 
@@ -207,7 +207,7 @@
             this.deleteSelectedPrizeButton.TabIndex = 23;
             this.deleteSelectedPrizeButton.Text = "Delete Selected";
             this.deleteSelectedPrizeButton.UseVisualStyleBackColor = true;
-            this.deleteSelectedPrizeButton.Click += new System.EventHandler(this.deleteSelectedPrizeButton_Click);
+           
             // 
             // prizeLabel
             // 
@@ -216,9 +216,9 @@
             this.prizeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.prizeLabel.Location = new System.Drawing.Point(522, 390);
             this.prizeLabel.Name = "prizeLabel";
-            this.prizeLabel.Size = new System.Drawing.Size(89, 45);
+            this.prizeLabel.Size = new System.Drawing.Size(103, 45);
             this.prizeLabel.TabIndex = 22;
-            this.prizeLabel.Text = "Prize";
+            this.prizeLabel.Text = "Prizes";
             // 
             // prizeListBox
             // 

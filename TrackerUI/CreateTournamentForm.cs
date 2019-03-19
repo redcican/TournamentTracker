@@ -99,7 +99,8 @@ namespace TrackerUI
 
         private void CreateNewTeamLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            TeamModel tm = new TeamModel()
+            CreateTeamForm ctf = new CreateTeamForm(this);
+            ctf.Show();
         }
     }
 }

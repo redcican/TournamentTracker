@@ -17,14 +17,15 @@ namespace TrackerUI
         #region Variable for Team members
         private List<PersonModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
         private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
+        private ITeamRequester callingForm;
         #endregion
 
         #region initialize
-        
+
         public CreateTeamForm(ITeamRequester caller)
         {
             InitializeComponent();
-
+            callingForm = caller;
             WireUpLists();
         }
         #endregion
@@ -60,6 +61,7 @@ namespace TrackerUI
                 p = GlobalConfig.Connection.CreatPerson(p);
                 selectedTeamMembers.Add(p);
                 WireUpLists();
+
 
                 // clear out the input
                 firstNameValue.Text = "";
@@ -150,9 +152,11 @@ namespace TrackerUI
                     TeamMembers = selectedTeamMembers
                 };
 
-                t = GlobalConfig.Connection.CreateTeam(t);
+                GlobalConfig.Connection.CreateTeam(t);
 
-                // TODO - if we aren't closing this form after creation, reset the form 
+                callingForm.TeamComplete(t);
+                this.Close();
+
             }
             else
             {

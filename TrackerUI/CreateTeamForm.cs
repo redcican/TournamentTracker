@@ -20,27 +20,15 @@ namespace TrackerUI
         #endregion
 
         #region initialize
-        public CreateTeamForm()
+        
+        public CreateTeamForm(ITeamRequester caller)
         {
             InitializeComponent();
-
-            //CreateSampleData();
 
             WireUpLists();
         }
         #endregion
 
-        #region Testdata
-        private void CreateSampleData()
-        {
-            availableTeamMembers.Add(new PersonModel {FirstName="Tim", LastName="Corey" });
-            availableTeamMembers.Add(new PersonModel { FirstName = "Sue", LastName = "Storm" });
-
-            selectedTeamMembers.Add(new PersonModel { FirstName = "Chen", LastName = "Shikun" });
-            selectedTeamMembers.Add(new PersonModel { FirstName = "Jane", LastName = "Jones" });
-        }
-
-        #endregion
 
         #region Method to wire up a selected team from combobox to list
         private void WireUpLists()

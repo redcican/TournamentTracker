@@ -42,9 +42,9 @@ namespace TrackerUI
             tournamentTeamsListBox.DisplayMember = "TeamName";
 
             // List box for the prize
-            prizeListBox.DataSource = null;
-            prizeListBox.DataSource = selectedPrizes;
-            prizeListBox.DisplayMember = "PlaceName";
+            tournamentPrizeListBox.DataSource = null;
+            tournamentPrizeListBox.DataSource = selectedPrizes;
+            tournamentPrizeListBox.DisplayMember = "PlaceName";
 
 
         }
@@ -102,6 +102,36 @@ namespace TrackerUI
             CreateTeamForm ctf = new CreateTeamForm(this);
             ctf.Show();
         }
+        #endregion
+
+        #region remove selected team button
+        private void RemoveSelectedPlayerButton_Click(object sender, EventArgs e)
+        {
+            TeamModel t = (TeamModel)tournamentTeamsListBox.SelectedItem;
+            if (t != null)
+            {
+                // remove the selected p from the list box
+                selectedTeams.Remove(t);
+                // readd the p to the drop down list
+                availableTeams.Add(t);
+                // refresh the lists
+                WireUpLists();
+            }
+        }
+        #endregion
+
+        #region remove selected prize button
+        private void RomoveSelectedPrizesButton_Click(object sender, EventArgs e)
+        {
+            PrizeModel p = (PrizeModel)tournamentPrizeListBox.SelectedItem;
+            if (p != null)
+            {
+                // remove the selected p from the list box
+                selectedPrizes.Remove(p);
+                WireUpLists();
+            }
+        }
+        #endregion
     }
 }
-        #endregion
+        

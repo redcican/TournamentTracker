@@ -132,6 +132,15 @@ namespace TrackerUI
             }
         }
         #endregion
+
+        private void CreateTournamentButton_Click(object sender, EventArgs e)
+        {
+            // Create Tournament entry
+            // Create all of the prizes entries 
+            // Create all of the team entries
+
+            // Create out Matchups
+        }
     }
 }
         

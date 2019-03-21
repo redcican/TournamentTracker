@@ -83,7 +83,7 @@ namespace TrackerLibrary.DataAccess
         #region Text connection to get all teams
         public List<TeamModel> GetTeam_All()
         {
-            throw new NotImplementedException();
+            return TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
         }
         #endregion
     }

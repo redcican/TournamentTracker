@@ -9,27 +9,31 @@ namespace TrackerLibrary.Models
     public class TournamentModel
     {
         /// <summary>
+        /// The unique Identifier for the tournament.
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
         /// Represents the name of a tournament
         /// </summary>
         public string TournamentName { get; set; }
 
         /// <summary>
-        /// Represents the entry fee of a tournament
+        /// The amount of money each team needs to put up to enter
         /// </summary>
         public decimal EntryFee { get; set; }
 
         /// <summary>
-        /// Represents the teams which entered
+        /// The set of teams that have been entered
         /// </summary>
         public List<TeamModel> EnteredTeams { get; set; }
 
         /// <summary>
-        /// Represents the prize of a tournaments
+        /// The list of prizes for the various places.
         /// </summary>
         public List<PrizeModel> Prizes { get; set; } = new List<PrizeModel>();
 
         /// <summary>
-        /// Represents the rounds of tournament
+        /// The matchup per round.
         /// </summary>
         public List<List<MatchupModel>> Rounds { get; set; } = new List<List<MatchupModel>>();
 

@@ -84,7 +84,7 @@ namespace TrackerLibrary.DataAccess
         }
         #endregion
 
-        #region Create  Teams
+        #region SQL to Create  Teams
         public TeamModel CreateTeam(TeamModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
@@ -130,6 +130,79 @@ namespace TrackerLibrary.DataAccess
                 }
             }
             return output;
+
+        }
+        #endregion
+
+        #region SQL to Create tournaments.
+        /// <summary>
+        /// Method to create a tournament
+        /// </summary>
+        /// <param name="model">Tournament model</param>
+        /// <returns></returns>
+        public TournamentModel CreateTournament(TournamentModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                SaveTournament(connection, model);
+
+                SaveTournamentPrize(connection, model);
+
+                SaveTournamentEntries(connection, model);
+
+                return model;
+            }
+        }
+        /// <summary>
+        /// Seperate method to save a tournament model 
+        /// </summary>
+        /// <param name="connection">IDB SQL connectin instance</param>
+        /// <param name="model">Tournament model</param>
+        private void SaveTournament(IDbConnection connection, TournamentModel model)
+        {
+            var t = new DynamicParameters();
+            t.Add("@TournamentName", model.TournamentName);
+            t.Add("@EntryFee", model.EntryFee);
+            t.Add("@id", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            connection.Execute("dbo.spTournaments_Insert", param: t, commandType: CommandType.StoredProcedure);
+
+            model.Id = t.Get<int>("@id");
+        }
+        /// <summary>
+        /// Seperate method to save a prize model
+        /// </summary>
+        /// <param name="connection">IDB SQL connection instance</param>
+        /// <param name="model">Tournament model</param>
+        private void SaveTournamentPrize(IDbConnection connection, TournamentModel model)
+        {
+            foreach (PrizeModel pz in model.Prizes)
+            {
+                var p = new DynamicParameters();
+                p.Add(@"TournamentId", model.Id);
+                p.Add(@"PrizedId", pz.Id);
+                p.Add("@id", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spTeamMembers_Insert", param: p, commandType: CommandType.StoredProcedure);
+            }
+        }
+        /// <summary>
+        /// Seperate method to save a team model
+        /// </summary>
+        /// <param name="connection">IDB SQL connection instance</param>
+        /// <param name="model">Tournament model</param>
+        private void SaveTournamentEntries(IDbConnection connection, TournamentModel model)
+        {
+
+            foreach (TeamModel tm in model.EnteredTeams)
+            {
+                var p = new DynamicParameters();
+                p.Add(@"TournamentId", model.Id);
+                p.Add(@"TeamId", tm.Id);
+                p.Add("@id", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spTournamentEntries_Insert", param: p, commandType: CommandType.StoredProcedure);
+            }
 
         }
         #endregion

@@ -86,5 +86,17 @@ namespace TrackerLibrary.DataAccess
             return TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
         }
         #endregion
+
+        #region Text conncetion to create tournaments.
+        private const string TournamentFile = "Tournaments.csv";
+
+        public TournamentModel CreateTournament(TournamentModel model)
+        {
+            List<TournamentModel> tournaments = TournamentFile.
+                                  FullFilePath().
+                                  LoadFile().
+                                  ConvertToTournamentModels(TeamFile, PeopleFile, PrizeFile);
+        }
+        #endregion
     }
 }

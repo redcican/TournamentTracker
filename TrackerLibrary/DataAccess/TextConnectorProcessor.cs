@@ -89,11 +89,11 @@ namespace TrackerLibrary.DataAccess.TextHelpers
 
         #endregion
 
-        #region ConvertToTeamModel
+        #region ConvertToTeamModels
         // Convert the text file to the team model
         public static List<TeamModel> ConvertToTeamModels(this List<string> lines, string PeopleFileName)
         {
-            // id, team name, list of ids separated by the pipe
+            // id, team name, list of team member ids separated by the pipe
             // e.g. 3, Tim's team, 1|2|3|4
             List<TeamModel> output = new List<TeamModel>();
             List<PersonModel> people = PeopleFileName.FullFilePath().LoadFile().ConvertToPersonModels();
@@ -116,6 +116,56 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 }
                 output.Add(t);
             }
+            return output;
+        }
+
+        #endregion
+
+        #region ConvertToTournamentModels
+
+        public static List<TournamentModel> ConvertToTournamentModels(this List<string> lines, 
+                                                                     string TeamFileName, 
+                                                                     string PeopleFileName, 
+                                                                     string PrizeFileName)
+        {
+            // id = 0
+            // TournamentName = 1
+            // EntryFee = 2
+            // Entered Teams = 3
+            // Prizes = 4
+            // Rounds = 5
+            // layout: id, TournamentName, EntryFee, (id|id|id - Entered Teams), (id|id|id - Prizes),(Rounds - id^id^id|id^id^id|id^id^id)
+            List<TournamentModel> output = new List<TournamentModel>();
+            List<TeamModel> teams = TeamFileName.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFileName);
+            List<PrizeModel> prizes = PrizeFileName.FullFilePath().LoadFile().ConvertToPrizeModels();
+
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split(',');
+                TournamentModel tm = new TournamentModel
+                {
+                    Id = int.Parse(cols[0]),
+                    TournamentName = cols[1],
+                    EntryFee = decimal.Parse(cols[2]),
+                };
+
+                string[] teamId = cols[3].Split('|');
+                foreach (string id in teamId)
+                {
+                    tm.EnteredTeams.Add(teams.Where(x => x.Id == int.Parse(id)).First());
+                }
+
+                string[] prizeId = cols[4].Split('|');
+                foreach (string id in prizeId)
+                {
+                    tm.Prizes.Add(prizes.Where(x => x.Id == int.Parse(id)).First());
+                }
+                   
+                // TODO - Capture Rounds information
+
+                output.Add(tm);
+            }
+
             return output;
         }
 

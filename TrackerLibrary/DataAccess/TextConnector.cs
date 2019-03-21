@@ -96,6 +96,17 @@ namespace TrackerLibrary.DataAccess
                                   FullFilePath().
                                   LoadFile().
                                   ConvertToTournamentModels(TeamFile, PeopleFile, PrizeFile);
+
+            int currentId = 1;
+            if(tournaments.Count > 0)
+            {
+                currentId = tournaments.OrderByDescending(x => x.Id).First().Id + 1;
+            }
+
+            model.Id = currentId;
+            tournaments.Add(model);
+            tournaments.SaveToFile(TournamentFile);
+            return model;
         }
         #endregion
     }

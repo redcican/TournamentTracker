@@ -90,7 +90,7 @@ namespace TrackerLibrary.DataAccess
         #region Text conncetion to create tournaments.
         private const string TournamentFile = "Tournaments.csv";
 
-        public TournamentModel CreateTournament(TournamentModel model)
+        public void CreateTournament(TournamentModel model)
         {
             List<TournamentModel> tournaments = TournamentFile.
                                   FullFilePath().
@@ -106,7 +106,7 @@ namespace TrackerLibrary.DataAccess
             model.Id = currentId;
             tournaments.Add(model);
             tournaments.SaveToFile(TournamentFile);
-            return model;
+        
         }
         #endregion
     }

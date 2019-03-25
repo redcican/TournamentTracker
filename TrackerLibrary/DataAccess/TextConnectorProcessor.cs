@@ -316,6 +316,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             output = output.Substring(0, output.Length - 1);
             return output;
         }
+        
         #endregion
     }
 }

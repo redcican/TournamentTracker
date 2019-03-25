@@ -159,7 +159,10 @@ namespace TrackerUI
             };
 
             // Wires our Matchups
-
+            // 1. order our list randomly of teams
+            // 2. Check if it is big enough, - if not, add in byes - 2*2*2*2
+            // 3. Create our first round of matchups
+            // 4. Create every round after that - e.g. - 8 matchups - 4 matchups - 2 matchups - 1 matchup
 
             // Create Tournament entry
             // Create all of the prizes entries 

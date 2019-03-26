@@ -163,7 +163,7 @@ namespace TrackerUI
             // 2. Check if it is big enough, - if not, add in byes - 2*2*2*2
             // 3. Create our first round of matchups
             // 4. Create every round after that - e.g. - 8 matchups - 4 matchups - 2 matchups - 1 matchup
-
+            TournamentLogic.CreateRounds(tm);
             // Create Tournament entry
             // Create all of the prizes entries 
             // Create all of the team entries
